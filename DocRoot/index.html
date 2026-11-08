@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101817">
+  <title>Browsardry</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./data/towns.js"></script>
+  <script defer src="./data/maps.js"></script>
+  <script defer src="./data/enemies.js"></script>
+  <script defer src="./engine.js"></script>
+  <script defer src="./game.js"></script>
+</head>
+<body>
+<main id="app">
+  <header><span class="wordmark">Browsardry</span><button id="menu" class="text-button" aria-label="旅のメニューを開く" hidden>☰ メニュー</button><span id="edition">灰の迷宮</span></header>
+  <section id="title-screen">
+    <div class="title-art"><canvas id="title-canvas" width="960" height="580" aria-label="夕暮れの街と古い迷宮の入り口"></canvas><div class="title-copy"><p class="eyebrow">A SOLITARY DUNGEON CHRONICLE</p><h1>Browsardry</h1><p class="roman">灰の迷宮</p><span class="ornament">◆</span><p class="tagline">たった一人で、石壁の向こうへ。</p></div></div>
+    <div class="title-actions"><button id="continue" class="primary" hidden>つづきから<span>旅の記録をたどる</span></button><button id="start">はじめから<span>新しい冒険へ</span></button></div>
+    <p class="title-note">一歩ずつの探索。一対一の戦い。<br>辺境の街と、その地下に眠る物語。</p>
+    <p class="save-note">行動ごとにこのブラウザーへ自動保存します。</p>
+  </section>
+  <section id="play" hidden aria-label="冒険画面">
+    <div class="location"><div><p id="region" class="eyebrow"></p><h2 id="location"></h2></div><span id="floor-badge" class="badge"></span></div>
+    <div class="stats"><div class="level"><small>LEVEL</small><strong id="level"></strong></div><div class="vitals"><div><label id="hp-label"></label><span id="mp-label"></span></div><div class="meters"><i><b id="hp-bar"></b></i><i><b id="mp-bar"></b></i></div><small id="xp"></small></div><div class="gold"><small>GOLD</small><strong id="gold"></strong></div></div>
+    <div class="viewport"><canvas id="view" width="720" height="400" aria-label="街・迷宮・敵の様子"></canvas><div id="enemy-info" hidden><span id="enemy-name"></span><div><i id="enemy-hp"></i></div></div><div id="encounter-banner" role="status" hidden><span>ENCOUNTER</span><strong id="encounter-name"></strong></div><small id="enemy-presence" hidden></small><button id="map-toggle" class="map-toggle" hidden>周辺地図</button><canvas id="map" width="182" height="154" hidden aria-label="現在地周辺の探索済み地図（現在地に追従）"></canvas><div id="view-caption"></div><div id="effect"></div></div>
+    <div class="equipment"><span id="equipment"></span><span id="position"></span></div>
+    <div id="journal" class="journal" aria-label="メッセージ" role="log" aria-live="polite" aria-atomic="true"></div>
+    <div id="controls" class="controls">
+    <div id="commands" class="commands"></div>
+    <div id="movement" class="movement" hidden><button data-move="forward" class="primary">↑<small>前進</small></button><button data-move="left">↶<small>左を向く</small></button><button data-move="right">↷<small>右を向く</small></button><button data-move="around">⤾<small>振り返る</small></button></div>
+    </div>
+    <p id="keyboard-note" class="save-note"></p>
+  </section>
+  <footer><span>Browsardry</span><span>ONE SOUL, ONE JOURNEY.</span></footer>
+</main>
+<div id="toast" role="status" hidden></div>
+<div id="level-up-effect" aria-hidden="true"></div>
+<dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-inner"><p class="eyebrow">TRAVELER'S JOURNAL</p><h2 id="dialog-title"></h2><div id="dialog-body"></div><div id="dialog-buttons"></div></div></dialog>
+<noscript>このゲームを遊ぶにはJavaScriptを有効にしてください。</noscript>
+</body>
+</html>

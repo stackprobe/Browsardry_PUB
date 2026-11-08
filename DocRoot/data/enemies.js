@@ -1,0 +1,336 @@
+'use strict';
+// IDs are permanent save identifiers. Do not reuse a retired ID.
+const BrowsardryEnemies = [
+  {
+    "id": 0,
+    "name": "洞穴ねずみ",
+    "town": 0,
+    "boss": false,
+    "health": 16,
+    "attack": 6,
+    "experience": 14,
+    "gold": 18,
+    "image": "./assets/enemies/cave-rat.png"
+  },
+  {
+    "id": 1,
+    "name": "骨の兵士",
+    "town": 0,
+    "boss": false,
+    "health": 28,
+    "attack": 10,
+    "experience": 22,
+    "gold": 28,
+    "image": "./assets/enemies/bone-soldier.png"
+  },
+  {
+    "id": 2,
+    "name": "夜の盗賊",
+    "town": 0,
+    "boss": false,
+    "health": 42,
+    "attack": 15,
+    "experience": 30,
+    "gold": 38,
+    "image": "./assets/enemies/night-thief.png"
+  },
+  {
+    "id": 3,
+    "name": "墓守の騎士",
+    "town": 0,
+    "boss": true,
+    "health": 360,
+    "attack": 82,
+    "experience": 110,
+    "gold": 230,
+    "image": "./assets/enemies/grave-knight.png"
+  },
+  {
+    "id": 12,
+    "name": "王都の魔猟犬",
+    "town": 1,
+    "boss": false,
+    "health": 120,
+    "attack": 40,
+    "experience": 26,
+    "gold": 32,
+    "image": "./assets/enemies/royal-hound.png"
+  },
+  {
+    "id": 13,
+    "name": "空ろな近衛",
+    "town": 1,
+    "boss": false,
+    "health": 155,
+    "attack": 49,
+    "experience": 38,
+    "gold": 46,
+    "image": "./assets/enemies/hollow-sentinel.png"
+  },
+  {
+    "id": 14,
+    "name": "宮廷の亡霊",
+    "town": 1,
+    "boss": false,
+    "health": 198,
+    "attack": 60,
+    "experience": 48,
+    "gold": 56,
+    "image": "./assets/enemies/court-shade.png"
+  },
+  {
+    "id": 15,
+    "name": "誓約の摂政",
+    "town": 1,
+    "boss": true,
+    "health": 760,
+    "attack": 138,
+    "experience": 200,
+    "gold": 340,
+    "image": "./assets/enemies/oathbound-regent.png"
+  },
+  {
+    "id": 16,
+    "name": "灰の香炉",
+    "town": 2,
+    "boss": false,
+    "health": 250,
+    "attack": 78,
+    "experience": 45,
+    "gold": 55,
+    "image": "./assets/enemies/ash-censer.png"
+  },
+  {
+    "id": 17,
+    "name": "堕ちた巡礼者",
+    "town": 2,
+    "boss": false,
+    "health": 300,
+    "attack": 87,
+    "experience": 58,
+    "gold": 70,
+    "image": "./assets/enemies/fallen-pilgrim.png"
+  },
+  {
+    "id": 18,
+    "name": "砕翼の聖像",
+    "town": 2,
+    "boss": false,
+    "health": 355,
+    "attack": 97,
+    "experience": 76,
+    "gold": 88,
+    "image": "./assets/enemies/broken-seraph.png"
+  },
+  {
+    "id": 19,
+    "name": "灰の祭司王",
+    "town": 2,
+    "boss": true,
+    "health": 1450,
+    "attack": 225,
+    "experience": 420,
+    "gold": 700,
+    "image": "./assets/enemies/ashen-hierophant.png",
+    "finalBoss": true
+  },
+  {
+    "id": 20,
+    "name": "墓穴の大蜘蛛",
+    "town": 0,
+    "boss": false,
+    "health": 60,
+    "attack": 21,
+    "experience": 35,
+    "gold": 44,
+    "image": "./assets/enemies/crypt-spider.png"
+  },
+  {
+    "id": 21,
+    "name": "棺の亡者",
+    "town": 0,
+    "boss": false,
+    "health": 82,
+    "attack": 28,
+    "experience": 40,
+    "gold": 50,
+    "image": "./assets/enemies/coffin-wight.png"
+  },
+  {
+    "id": 22,
+    "name": "墓荒らしの頭目",
+    "town": 0,
+    "boss": false,
+    "health": 108,
+    "attack": 36,
+    "experience": 46,
+    "gold": 58,
+    "image": "./assets/enemies/tomb-raider.png"
+  },
+  {
+    "id": 23,
+    "name": "骸骨の重衛兵",
+    "town": 0,
+    "boss": false,
+    "health": 138,
+    "attack": 45,
+    "experience": 52,
+    "gold": 66,
+    "image": "./assets/enemies/bone-guardian.png"
+  },
+  {
+    "id": 24,
+    "name": "弔鐘の亡霊",
+    "town": 0,
+    "boss": false,
+    "health": 172,
+    "attack": 55,
+    "experience": 60,
+    "gold": 74,
+    "image": "./assets/enemies/mourning-wraith.png"
+  },
+  {
+    "id": 25,
+    "name": "納骨堂の死霊術師",
+    "town": 0,
+    "boss": false,
+    "health": 210,
+    "attack": 66,
+    "experience": 70,
+    "gold": 84,
+    "image": "./assets/enemies/ossuary-necromancer.png"
+  },
+  {
+    "id": 26,
+    "name": "王印の魔道書",
+    "town": 1,
+    "boss": false,
+    "health": 248,
+    "attack": 73,
+    "experience": 58,
+    "gold": 68,
+    "image": "./assets/enemies/royal-grimoire.png"
+  },
+  {
+    "id": 27,
+    "name": "封庫の擬態箱",
+    "town": 1,
+    "boss": false,
+    "health": 305,
+    "attack": 88,
+    "experience": 70,
+    "gold": 82,
+    "image": "./assets/enemies/vault-mimic.png"
+  },
+  {
+    "id": 28,
+    "name": "鎖の獄吏",
+    "town": 1,
+    "boss": false,
+    "health": 370,
+    "attack": 105,
+    "experience": 84,
+    "gold": 98,
+    "image": "./assets/enemies/chain-jailer.png"
+  },
+  {
+    "id": 29,
+    "name": "黒冠の近衛長",
+    "town": 1,
+    "boss": false,
+    "health": 445,
+    "attack": 124,
+    "experience": 100,
+    "gold": 118,
+    "image": "./assets/enemies/black-crown-captain.png"
+  },
+  {
+    "id": 30,
+    "name": "燭台の侍者",
+    "town": 2,
+    "boss": false,
+    "health": 415,
+    "attack": 108,
+    "experience": 88,
+    "gold": 102,
+    "image": "./assets/enemies/candle-acolyte.png"
+  },
+  {
+    "id": 31,
+    "name": "贖罪の鎖僧",
+    "town": 2,
+    "boss": false,
+    "health": 480,
+    "attack": 120,
+    "experience": 100,
+    "gold": 118,
+    "image": "./assets/enemies/penitent-monk.png"
+  },
+  {
+    "id": 32,
+    "name": "聖骸の番人",
+    "town": 2,
+    "boss": false,
+    "health": 550,
+    "attack": 133,
+    "experience": 116,
+    "gold": 136,
+    "image": "./assets/enemies/reliquary-keeper.png"
+  },
+  {
+    "id": 33,
+    "name": "沈黙の聖歌隊",
+    "town": 2,
+    "boss": false,
+    "health": 625,
+    "attack": 147,
+    "experience": 134,
+    "gold": 156,
+    "image": "./assets/enemies/silent-chorister.png"
+  },
+  {
+    "id": 34,
+    "name": "断罪の司祭",
+    "town": 2,
+    "boss": false,
+    "health": 705,
+    "attack": 162,
+    "experience": 154,
+    "gold": 178,
+    "image": "./assets/enemies/judgment-priest.png"
+  },
+  {
+    "id": 35,
+    "name": "聖灰の巨兵",
+    "town": 2,
+    "boss": false,
+    "health": 790,
+    "attack": 178,
+    "experience": 176,
+    "gold": 202,
+    "image": "./assets/enemies/sacred-ash-colossus.png"
+  },
+  {
+    "id": 36,
+    "name": "封印の熾天使",
+    "town": 2,
+    "boss": false,
+    "health": 880,
+    "attack": 195,
+    "experience": 200,
+    "gold": 230,
+    "image": "./assets/enemies/sealed-seraph.png"
+  },
+  {
+    "id": 37,
+    "name": "灰冠の預言者",
+    "town": 2,
+    "boss": false,
+    "health": 975,
+    "attack": 213,
+    "experience": 228,
+    "gold": 262,
+    "image": "./assets/enemies/ash-crown-prophet.png"
+  }
+];
+if(typeof module!=='undefined')module.exports=BrowsardryEnemies;
